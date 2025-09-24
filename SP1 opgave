@@ -45,7 +45,7 @@ void setup() {
 void draw() {
   background(0,100,255);
 
-  // tegner grupperne
+  // tegner grupperne ved hjælp af funktionen under, så det hele er grupperet
   drawGroup("GROUP A", groupA, flagsA, 50, 50);
   drawGroup("GROUP B", groupB, flagsB, 50, 320);
   drawGroup("GROUP C", groupC, flagsC, 520, 50);
@@ -54,24 +54,24 @@ void draw() {
 
 // Funktion til at tegne en gruppe med flag + tekst
 void drawGroup(String title, String[] names, PImage[] imgs, int x, int y) {
-  int w = 335;
+  int w = 335; //ingen betydelig grund til de har de her værdier, det bare så det er proportioneret.
   int h = 165;
   
-  // den blå firkant i baggrunden
+  // den blå firkant i baggrunden af grupperne
   fill(10, 40, 90); 
   rect(x, y+45, w, h);
 
   // titlerne
-  println("test1");
+  println("test1"); // Havde nogle små fejl da skulle have det her til at virker, så jeg fik den til at printe en linje ud for at tjekke hvornår fejlen opstod. så der blevet lavet en her og på linje 74.
   if (title.equals("GROUP A") || title.equals("GROUP C")) {
-  fill(0, 255, 255); // Cyan for A og C
+  fill(0, 255, 255); // blå for A og C
 } else if (title.equals("GROUP B") || title.equals("GROUP D")) {
   fill(255, 255, 0); // Gul for B og D
 } 
   textSize(24);
   text(title, x + 125, y + 35);
   
-  println("test");
+  println("test"); // se linje 65.
 
   // landene
   textSize(20);
@@ -86,8 +86,8 @@ void drawGroup(String title, String[] names, PImage[] imgs, int x, int y) {
   rect(x+10, rowY-20, w-20,30);
   
   // flagene
-  if(imgs[i] != null){
-    image(imgs[i], x+11, rowY - 17, 40, 25);
+  if(imgs[i] != null){ // her tjekker den om der er et billede på pladsen, hvis der ikke er så indlæser den et flag og går videre hvis der er allerede er et billede.
+    image(imgs[i], x+11, rowY - 17, 40, 25); // Selve billedet og pladsen.
   }
   
   // lande navne
